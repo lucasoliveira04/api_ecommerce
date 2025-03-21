@@ -1,5 +1,8 @@
 package ecommerce_api.ecommerce_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
+import ecommerce_api.ecommerce_api.services.Discount.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +25,10 @@ public class Produto {
     @Column(name = "price")
     private Double productPrice;
 
+    @JsonIgnore
+    @Column(name = "priceWithDiscount")
+    private Double productPriceWithDiscount;
+
     @Column(name = "description")
     private String productDescription;
 
@@ -29,15 +36,18 @@ public class Produto {
     private int productQuantity;
 
     @Column(name = "category_product")
-    private String categoryProduct;
+    @Enumerated(EnumType.STRING)
+    private CategoryProductEnum categoryProduct;
+
+    @JsonIgnore
+    @Column(name = "hasDiscount")
+    private boolean hasDiscount;
 
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
     @PrePersist
     private void onCreate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String date = LocalDateTime.now().format(formatter);
         this.createdAt = LocalDateTime.now();
     }
 

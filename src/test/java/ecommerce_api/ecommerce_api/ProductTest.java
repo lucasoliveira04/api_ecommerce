@@ -1,6 +1,7 @@
 package ecommerce_api.ecommerce_api;
 
 import ecommerce_api.ecommerce_api.dto.ProdutoDto;
+import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
 import ecommerce_api.ecommerce_api.model.Produto;
 import ecommerce_api.ecommerce_api.repository.ProdutoRepository;
 import ecommerce_api.ecommerce_api.services.CreatedProductService;
@@ -21,8 +22,10 @@ class ProductTest {
                 "Celular",
                 6500.0,
                 "Xiaomi Poco Phone 15 pro max",
-               "ELECTROICS",
-                19
+               CategoryProductEnum.ELECTRONIC,
+                19,
+                false,
+                0.0
         );
 
         ResponseEntity<?> response = createdProductService.create(produtoDto);

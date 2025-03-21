@@ -1,10 +1,14 @@
 package ecommerce_api.ecommerce_api.dto;
 
+import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
+
 public record ProdutoDto(
         String name,
         Double price,
         String description,
-        String categoryProduct,
-        Integer productQuantity
+        CategoryProductEnum categoryProduct,
+        Integer productQuantity,
+        Boolean hasDiscount,
+        Double discount
 )
 {}
