@@ -2,7 +2,6 @@ package ecommerce_api.ecommerce_api.services;
 
 import ecommerce_api.ecommerce_api.dto.ProdutoDto;
 import ecommerce_api.ecommerce_api.dto.ProdutoDtoResponse;
-import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
 import ecommerce_api.ecommerce_api.model.Produto;
 import ecommerce_api.ecommerce_api.repository.ProdutoRepository;
 import ecommerce_api.ecommerce_api.services.Discount.DiscountService;
@@ -12,9 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreatedProductService {
     private final ProdutoRepository produtoRepository;
+    private final DiscountService discountService;
 
-    public CreatedProductService(ProdutoRepository produtoRepository) {
+    public CreatedProductService(ProdutoRepository produtoRepository, DiscountService discountService) {
         this.produtoRepository = produtoRepository;
+        this.discountService = discountService;
     }
 
     public ResponseEntity<?> create(ProdutoDto produtoDto) {
@@ -27,19 +28,16 @@ public class CreatedProductService {
             produto.setCategoryProduct(produtoDto.categoryProduct());
             produto.setHasDiscount(produtoDto.hasDiscount());
 
-            double priceWithDiscount = DiscountService.applyDiscount(
-                    produto.getCategoryProduct(),
-                    produto.getProductPrice(),
-                    produtoDto.discount()
-            );
-
-            if (produtoDto.hasDiscount()) {
-                produto.setProductPriceWithDiscount(priceWithDiscount);
-            }
+            produto.applyDiscount(discountService, produtoDto.discount());
 
             Produto data =  produtoRepository.save(produto);
 
-            ProdutoDtoResponse produtoDtoResponse = new ProdutoDtoResponse(data, priceWithDiscount, produtoDto.discount(), produtoDto.hasDiscount());
+            ProdutoDtoResponse produtoDtoResponse = new ProdutoDtoResponse(
+                    data,
+                    produto.getProductPriceWithDiscount(),
+                    produtoDto.discount(),
+                    produtoDto.hasDiscount()
+            );
 
             return ResponseEntity.ok().body(produtoDtoResponse);
         } catch (Exception e) {

@@ -51,4 +51,12 @@ public class Produto {
         this.createdAt = LocalDateTime.now();
     }
 
+    public void applyDiscount(DiscountService discountService, double discountValue) {
+        if (this.hasDiscount){
+            this.productPriceWithDiscount = discountService.applyDiscount(this.categoryProduct, this.productPrice, discountValue);
+        } else {
+            this.productPriceWithDiscount = this.productPrice;
+        }
+    }
+
 }
