@@ -8,10 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 class ProductTest {
     @Test
@@ -19,7 +17,13 @@ class ProductTest {
         ProdutoRepository produtoRepository = mock(ProdutoRepository.class);
         CreatedProductService createdProductService = new CreatedProductService(produtoRepository);
 
-        ProdutoDto produtoDto = new ProdutoDto("Celular", 5000.0);
+        ProdutoDto produtoDto = new ProdutoDto(
+                "Celular",
+                6500.0,
+                "Xiaomi Poco Phone 15 pro max",
+               "ELECTROICS",
+                19
+        );
 
         ResponseEntity<?> response = createdProductService.create(produtoDto);
 

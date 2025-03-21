@@ -17,8 +17,11 @@ public class CreatedProductService {
     public ResponseEntity<?> create(ProdutoDto produtoDto) {
         try{
             Produto produto = new Produto();
-            produto.setName(produtoDto.name());
-            produto.setPrice(produtoDto.price());
+            produto.setProductName(produtoDto.name());
+            produto.setProductPrice(produtoDto.price());
+            produto.setProductDescription(produtoDto.description());
+            produto.setProductQuantity(produtoDto.productQuantity());
+            produto.setCategoryProduct(produtoDto.categoryProduct());
             Produto data =  produtoRepository.save(produto);
             return ResponseEntity.ok().body(data);
         } catch (Exception e) {
