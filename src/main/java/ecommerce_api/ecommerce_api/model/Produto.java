@@ -2,13 +2,12 @@ package ecommerce_api.ecommerce_api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
-import ecommerce_api.ecommerce_api.services.Discount.*;
+import ecommerce_api.ecommerce_api.services.discount.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Entity(name = "product_main")
 @Getter @Setter
