@@ -6,7 +6,7 @@ import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
 import ecommerce_api.ecommerce_api.model.Produto;
 import ecommerce_api.ecommerce_api.repository.ProdutoRepository;
 import ecommerce_api.ecommerce_api.services.CreatedProductService;
-import ecommerce_api.ecommerce_api.services.Discount.DiscountService;
+import ecommerce_api.ecommerce_api.services.discount.DiscountService;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
