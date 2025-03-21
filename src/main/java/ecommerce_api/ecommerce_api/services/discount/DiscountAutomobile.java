@@ -1,10 +1,10 @@
-package ecommerce_api.ecommerce_api.services.Discount;
+package ecommerce_api.ecommerce_api.services.discount;
 
-public class DiscountFood implements IDiscount{
+public class DiscountAutomobile implements IDiscount{
 
     private Double discount;
 
-    public DiscountFood(Double discount) {
+    public DiscountAutomobile(Double discount) {
         this.discount = Math.max(0, Math.min(discount, 25));
     }
 

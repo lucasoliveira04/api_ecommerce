@@ -1,8 +1,8 @@
-package ecommerce_api.ecommerce_api.services.Discount;
+package ecommerce_api.ecommerce_api.services.discount;
 
 public class DiscountElectronic implements IDiscount{
 
-    private Double discount;
+    private final Double discount;
 
     public DiscountElectronic(Double discount) {
         this.discount = Math.max(0, Math.min(discount, 25));
