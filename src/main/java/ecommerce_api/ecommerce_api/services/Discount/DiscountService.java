@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 public class DiscountService {
     public double applyDiscount(CategoryProductEnum categoryProductEnum, double price, double discount) {
         IDiscount discountStrategy = switch (categoryProductEnum){
-            case AUTOMOBILE -> discountStrategy = new DiscountAutomobile(discount);
-            case ELECTRONIC -> discountStrategy = new DiscountElectronic(discount);
-            case FOOD -> discountStrategy = new DiscountFood(discount);
+            case AUTOMOBILE ->  new DiscountAutomobile(discount);
+            case ELECTRONIC ->  new DiscountElectronic(discount);
+            case FOOD ->    new DiscountFood(discount);
             default -> (p) -> p;
         };
 
