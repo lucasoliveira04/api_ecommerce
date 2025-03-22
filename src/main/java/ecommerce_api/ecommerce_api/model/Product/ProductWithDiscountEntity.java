@@ -1,4 +1,4 @@
-package ecommerce_api.ecommerce_api.model;
+package ecommerce_api.ecommerce_api.model.Product;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,6 +15,7 @@ public class ProductWithDiscountEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", nullable = false)
     private Produto produto;
 
     @Column(name = "initDiscount")
