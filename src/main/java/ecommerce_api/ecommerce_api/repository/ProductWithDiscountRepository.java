@@ -1,7 +1,7 @@
 package ecommerce_api.ecommerce_api.repository;
 
-import ecommerce_api.ecommerce_api.model.ProductWithDiscountEntity;
-import ecommerce_api.ecommerce_api.model.Produto;
+import ecommerce_api.ecommerce_api.model.Product.ProductWithDiscountEntity;
+import ecommerce_api.ecommerce_api.model.Product.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

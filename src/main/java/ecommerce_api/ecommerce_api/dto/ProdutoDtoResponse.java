@@ -1,6 +1,6 @@
 package ecommerce_api.ecommerce_api.dto;
 
-import ecommerce_api.ecommerce_api.model.Produto;
+import ecommerce_api.ecommerce_api.model.Product.Produto;
 
 public record ProdutoDtoResponse(Produto produto, InfoDiscount infoDiscount) {
 

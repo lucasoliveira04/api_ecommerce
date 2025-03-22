@@ -1,8 +1,8 @@
-package ecommerce_api.ecommerce_api.model;
+package ecommerce_api.ecommerce_api.model.Product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
-import ecommerce_api.ecommerce_api.services.discount.*;
+import ecommerce_api.ecommerce_api.services.discount.types.DiscountService;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
