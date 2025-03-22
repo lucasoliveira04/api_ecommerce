@@ -3,10 +3,10 @@ package ecommerce_api.ecommerce_api;
 import ecommerce_api.ecommerce_api.dto.ProdutoDto;
 import ecommerce_api.ecommerce_api.dto.ProdutoDtoResponse;
 import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
-import ecommerce_api.ecommerce_api.model.Produto;
+import ecommerce_api.ecommerce_api.model.Product.Produto;
 import ecommerce_api.ecommerce_api.repository.ProdutoRepository;
-import ecommerce_api.ecommerce_api.services.CreatedProductService;
-import ecommerce_api.ecommerce_api.services.discount.DiscountService;
+import ecommerce_api.ecommerce_api.services.discount.service.CreatedProductService;
+import ecommerce_api.ecommerce_api.services.discount.types.DiscountService;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 

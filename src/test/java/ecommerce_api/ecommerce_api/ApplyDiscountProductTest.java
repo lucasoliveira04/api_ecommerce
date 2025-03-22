@@ -1,9 +1,11 @@
 package ecommerce_api.ecommerce_api;
 
-import ecommerce_api.ecommerce_api.model.ProductWithDiscountEntity;
-import ecommerce_api.ecommerce_api.model.Produto;
+import ecommerce_api.ecommerce_api.model.Product.ProductWithDiscountEntity;
+import ecommerce_api.ecommerce_api.model.Product.Produto;
 import ecommerce_api.ecommerce_api.repository.ProductWithDiscountRepository;
-import ecommerce_api.ecommerce_api.services.DiscountScheduleService;
+import ecommerce_api.ecommerce_api.repository.ProdutoRepository;
+import ecommerce_api.ecommerce_api.services.discount.service.ProductDiscountExpired;
+import ecommerce_api.ecommerce_api.services.discount.service.ApplyDateInitAndEndDiscountProduct;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,14 +14,18 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-class DiscountScheduleServiceTest {
+class ApplyDiscountProductTest {
     private ProductWithDiscountRepository productWithDiscountRepository;
-    private DiscountScheduleService discountScheduleService;
+    private ProdutoRepository produtoRepository;
+    private ApplyDateInitAndEndDiscountProduct applyDiscountProduct;
+    private ProductDiscountExpired productDiscountExpired;
 
     @BeforeEach
     void setUp(){
         productWithDiscountRepository = mock(ProductWithDiscountRepository.class);
-        discountScheduleService = new DiscountScheduleService(productWithDiscountRepository);
+        produtoRepository = mock(ProdutoRepository.class);
+        applyDiscountProduct = new ApplyDateInitAndEndDiscountProduct(productWithDiscountRepository, produtoRepository);
+        productDiscountExpired = new ProductDiscountExpired(productWithDiscountRepository);
     }
 
     @Test
@@ -36,7 +42,7 @@ class DiscountScheduleServiceTest {
         when(productWithDiscountRepository.findAll()).thenReturn(List.of(expiredDiscount));
 
         // Chamar o método que verifica e remove descontos expirados
-        discountScheduleService.checkDateInitialisationAndEndDiscount();
+        productDiscountExpired.checkDateInitialisationAndEndDiscount();
 
         // Verificar se o produto foi removido do banco
         verify(productWithDiscountRepository, times(1)).delete(expiredDiscount);
@@ -59,7 +65,7 @@ class DiscountScheduleServiceTest {
         when(productWithDiscountRepository.findAll()).thenReturn(List.of(validDiscount));
 
         // Chamar o método que verifica descontos
-        discountScheduleService.checkDateInitialisationAndEndDiscount();
+        productDiscountExpired.checkDateInitialisationAndEndDiscount();
 
         verify(productWithDiscountRepository, never()).delete(any());
         verify(productWithDiscountRepository, never()).save(any());
