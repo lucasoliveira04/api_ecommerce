@@ -1,6 +1,7 @@
-package ecommerce_api.ecommerce_api.services.discount;
+package ecommerce_api.ecommerce_api.services.discount.types;
 
 import ecommerce_api.ecommerce_api.enums.CategoryProductEnum;
+import ecommerce_api.ecommerce_api.services.discount.IDiscount;
 import org.springframework.stereotype.Service;
 
 @Service

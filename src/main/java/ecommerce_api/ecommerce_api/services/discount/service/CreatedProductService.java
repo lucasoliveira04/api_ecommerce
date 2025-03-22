@@ -1,10 +1,10 @@
-package ecommerce_api.ecommerce_api.services;
+package ecommerce_api.ecommerce_api.services.discount.service;
 
 import ecommerce_api.ecommerce_api.dto.ProdutoDto;
 import ecommerce_api.ecommerce_api.dto.ProdutoDtoResponse;
-import ecommerce_api.ecommerce_api.model.Produto;
+import ecommerce_api.ecommerce_api.model.Product.Produto;
 import ecommerce_api.ecommerce_api.repository.ProdutoRepository;
-import ecommerce_api.ecommerce_api.services.discount.DiscountService;
+import ecommerce_api.ecommerce_api.services.discount.types.DiscountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

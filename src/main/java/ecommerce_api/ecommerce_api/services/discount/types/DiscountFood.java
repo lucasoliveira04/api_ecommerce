@@ -1,6 +1,8 @@
-package ecommerce_api.ecommerce_api.services.discount;
+package ecommerce_api.ecommerce_api.services.discount.types;
 
-public class DiscountFood implements IDiscount{
+import ecommerce_api.ecommerce_api.services.discount.IDiscount;
+
+public class DiscountFood implements IDiscount {
 
     private Double discount;
 
